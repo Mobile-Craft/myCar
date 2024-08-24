@@ -9,10 +9,10 @@ import { GradientBorderView } from "@/components/GradientBorderView";
 import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
 
 export default function HomeScreen() {
-  const gradientWidth = useSharedValue(0); // Starting width of 0
+  const gradientWidth = useSharedValue(0); 
 
   useEffect(() => {
-    gradientWidth.value = withTiming(1, { duration: 1000 }); // Animate to full width
+    gradientWidth.value = withTiming(1, { duration: 1000 }); 
   }, []);
 
   const animatedStyle = useAnimatedStyle(() => {
@@ -180,5 +180,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     paddingTop: 28,
     alignSelf: "center",
+    color:'#ffffff99',
   },
 });

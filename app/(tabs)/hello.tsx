@@ -53,7 +53,7 @@ export default function HelloScreen() {
         <ThemedText
           type="title"
           lightColor="white"
-          style={[globalStyles.shadow2]}
+          style={[globalStyles.shadow2, styles.name]}
         >
           Benjamin
         </ThemedText>
@@ -85,14 +85,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 140,
   },
+  name:{
+    color:'#ffffff99',
+    letterSpacing: 2,
+    fontSize:40
+  },
   footerCar: {
     bottom: -10,
     alignSelf: "center",
   },
   footerCar2: {
     bottom: -20,
-    // left: 20
-    // alignSelf: "center",
   },
   ProfileCircle: {
     top: 60,
@@ -101,5 +104,6 @@ const styles = StyleSheet.create({
   },
   lock: {
     marginTop: 26,
+    marginBottom:12
   },
 });
