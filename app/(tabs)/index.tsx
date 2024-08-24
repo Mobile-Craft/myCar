@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { StyleSheet, View, Image, Pressable, Text } from "react-native";
 import GradientBackground from "@/components/GradientBackground";
 import { ThemedText } from "@/components/ThemedText";
@@ -5,8 +6,21 @@ import { globalStyles } from "@/components/GlobalStyle";
 import { LinearGradient } from "expo-linear-gradient";
 import { Link } from "expo-router";
 import { GradientBorderView } from "@/components/GradientBorderView";
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from "react-native-reanimated";
 
 export default function HomeScreen() {
+  const gradientWidth = useSharedValue(0); // Starting width of 0
+
+  useEffect(() => {
+    gradientWidth.value = withTiming(1, { duration: 1000 }); // Animate to full width
+  }, []);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ scaleX: gradientWidth.value }],
+    };
+  });
+
   return (
     <GradientBackground>
       <Image
@@ -42,8 +56,12 @@ export default function HomeScreen() {
           Do you want to continue Individual mode on your M5 Competition?
         </ThemedText>
       </View>
-
-      <LinearGradient colors={["#ffffff3b", "#ffffff2c"]} style={styles.line} />
+      <Animated.View style={[animatedStyle]}>
+        <LinearGradient
+          colors={["#ffffff3b", "#ffffff2c"]}
+          style={[styles.line]}
+        />
+      </Animated.View>
       <View style={styles.containerButtom}>
         <GradientBorderView
           style={[
