@@ -13,11 +13,13 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarStyle: {display:'none'}
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
+          href: null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
@@ -27,6 +29,7 @@ export default function TabLayout() {
         name="explore"
         options={{
           title: 'Explore',
+          href: null,
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
           ),

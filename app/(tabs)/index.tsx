@@ -1,70 +1,166 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { StyleSheet, View, Image, Pressable, Text } from "react-native";
+import GradientBackground from "@/components/GradientBackground";
+import { ThemedText } from "@/components/ThemedText";
+import { globalStyles } from "@/components/GlobalStyle";
+import { LinearGradient } from "expo-linear-gradient";
+import { Link } from "expo-router";
+import { GradientBorderView } from "@/components/GradientBorderView";
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <GradientBackground>
+      <Image
+        source={require("@/assets/images/menu.png")}
+        style={styles.circleMenu}
+      />
+      <View style={styles.logoCotainer}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("@/assets/images/m3Logo.png")}
+          style={styles.m3Logo}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
+        <Image source={require("@/assets/images/bmwLogo.png")} />
+      </View>
+      <View style={styles.titleContainer}>
+        <ThemedText
+          type="title"
+          lightColor="white"
+          style={[styles.title, globalStyles.shadow1]}
+        >
+          Welcome back,
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+        <ThemedText
+          lightColor="white"
+          style={[styles.subTitle, globalStyles.shadow1]}
+        >
+          Benjamin!
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+        <ThemedText
+          type="subtitle"
+          lightColor="white"
+          style={[styles.text, { paddingTop: 50 }]}
+        >
+          Do you want to continue Individual mode on your M5 Competition?
         </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      </View>
+
+      <LinearGradient colors={["#ffffff3b", "#ffffff2c"]} style={styles.line} />
+      <View style={styles.containerButtom}>
+        <GradientBorderView
+          style={[
+            styles.buttom,
+            {
+              backgroundColor: "#c4c4c45",
+            },
+          ]}
+          gradientProps={{}}
+        >
+          <Pressable style={[styles.buttom, {}]}>
+            <ThemedText
+              type="subtitle"
+              lightColor="white"
+              style={[styles.textButtom]}
+            >
+              No, Thank!
+            </ThemedText>
+          </Pressable>
+        </GradientBorderView>
+
+        <GradientBorderView
+          style={[
+            styles.buttom,
+            {
+              backgroundColor: "#36000030",
+            },
+          ]}
+          gradientProps={{}}
+        >
+          <Link href={"/hello"} asChild style={[]}>
+            <Pressable style={[]}>
+              <ThemedText
+                type="subtitle"
+                lightColor="white"
+                style={[styles.textButtom]}
+              >
+                Continue
+              </ThemedText>
+            </Pressable>
+          </Link>
+        </GradientBorderView>
+      </View>
+      <ThemedText lightColor="white" style={[styles.copyR]}>
+        By Elder Tavarez
+      </ThemedText>
+    </GradientBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 36,
+    backgroundColor: "blue",
+  },
+  circleMenu: {
+    marginTop: 80,
+    right: 30,
+    position: "absolute",
+  },
+  logoCotainer: {
+    alignSelf: "center",
+    marginTop: 122,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  m3Logo: {
+    top: 5,
+  },
+  title: {
+    fontSize: 35,
+    fontWeight: "200",
+    paddingTop: 80,
+  },
+  subTitle: {
+    fontSize: 30,
+    fontWeight: "700",
+    lineHeight: 30,
+  },
   titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+    marginHorizontal: 55,
+    alignContent: "flex-start",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  text: {
+    fontWeight: "300",
+    fontSize: 22,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  line: {
+    height: 2,
+    marginTop: 70,
+    borderRadius: 30,
+    marginHorizontal: 21,
+  },
+  containerButtom: {
+    marginTop: 58,
+    paddingHorizontal: 35,
+    flexDirection: "row",
+    alignContent: "space-between",
+    justifyContent: "space-between",
+  },
+  buttom: {
+    width: 145,
+    height: 61,
+    borderWidth: 1,
+    borderRadius: 12,
+    borderColor: "#003D78",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textButtom: {
+    fontWeight: "300",
+    fontSize: 18,
+  },
+  copyR: {
+    fontSize: 14,
+    paddingTop: 28,
+    alignSelf: "center",
   },
 });
