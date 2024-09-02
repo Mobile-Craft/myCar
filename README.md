@@ -16,6 +16,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
+## Example
+<img src="example/home.png" alt="home Image" > <img src="example/unlock.png" alt="Unlock Image" >
+
 In the output, you'll find options to open the app in a
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)
