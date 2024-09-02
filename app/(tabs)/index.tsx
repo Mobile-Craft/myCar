@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   containerButtom: {
     marginTop: 58,
-    paddingHorizontal: 35,
+    paddingHorizontal: 25,
     flexDirection: "row",
     alignContent: "space-between",
     justifyContent: "space-between",

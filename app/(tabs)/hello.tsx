@@ -12,10 +12,8 @@ export default function HelloScreen() {
   const buttonOpacity = useSharedValue(0);
 
   useEffect(() => {
-    // Animación del coche
     carPosition.value = withTiming(0, { duration: 1000 }, (isFinished) => {
       if (isFinished) {
-        // Cuando la animación del coche termina, comienza la animación del botón
         buttonOpacity.value = withTiming(1, { duration: 500 });
       }
     });
